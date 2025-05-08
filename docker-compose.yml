@@ -78,6 +78,19 @@ services:
       - laravel-net
     depends_on:
       - php
+  artisan_report:
+    container_name: artisan-report
+    build:
+      dockerfile: php.dock
+    working_dir: '/var/www/logerr'
+    restart: unless-stopped
+    volumes:
+      - '/var/www/logerr:/var/www/logerr'
+    entrypoint: [ "php", "artisan", "report:calculate" ]
+    networks:
+      - laravel-net
+    depends_on:
+      - php
   redis:
     image: redis:7.4.3
     container_name: redis-laravel
