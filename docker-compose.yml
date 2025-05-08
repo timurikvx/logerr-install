@@ -12,7 +12,7 @@ services:
       - /opt/database/logerr:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=logerr
-      - POSTGRES_USER=root
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=nr04wDdk1D
   rabbitmq:
     image: rabbitmq:4-management
