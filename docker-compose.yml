@@ -10,17 +10,17 @@ services:
       laravel-net:
         ipv4_address: 172.16.238.15
     volumes:
-      - /opt//database/logerr:/var/lib/postgresql/data
+      - /opt/database/logerr:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=logerr
-      - POSTGRES_USER=timmy
-      - POSTGRES_PASSWORD=123123123
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=nr04wDdk1D
   rabbitmq:
     image: rabbitmq:4-management
     container_name: rabbit-laravel
     ports:
       - 5672:5672
-      - 8080:15672
+      - 15673:15672
     networks:
       laravel-net:
         ipv4_address: 172.16.238.16
