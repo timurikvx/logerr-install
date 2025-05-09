@@ -51,15 +51,29 @@ services:
       - laravel-net
     depends_on:
        - php
-  artisan_rabbit:
-    container_name: artisan-rabbit
+  artisan_rabbit_logs:
+    container_name: artisan-rabbit-logs
     build: 
       dockerfile: php.dock
     working_dir: '/var/www/logerr'
     restart: unless-stopped
     volumes:
       - '/var/www/logerr:/var/www/logerr'
-    entrypoint: ["php", "artisan", "rabbit:errors"]
+    entrypoint: ["php", "artisan", "rabbit:logs"]
+    networks:
+      - laravel-net
+    depends_on:
+      - php
+      - rabbitmq
+  artisan_rabbit_errors:
+    container_name: artisan-rabbit-errors
+    build:
+      dockerfile: php.dock
+    working_dir: '/var/www/logerr'
+    restart: unless-stopped
+    volumes:
+      - '/var/www/logerr:/var/www/logerr'
+    entrypoint: [ "php", "artisan", "rabbit:errors" ]
     networks:
       - laravel-net
     depends_on:
